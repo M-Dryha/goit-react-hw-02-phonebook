@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types'; 
 import ContactForm from "./ContactForm";
 import ListContacts from "./ListContacts";
 import Filter  from "./Filter";
@@ -28,7 +29,11 @@ export class App extends Component{
 
     this.setState(prevState => {
       const { contacts } = prevState;
-
+      const nameContact = contacts.find(c => c.name === name)
+      if (nameContact) {
+        alert(`${name} is already in contact`)
+        return;
+} 
       return {
         contacts: [
           {
@@ -64,7 +69,7 @@ export class App extends Component{
     const { filter } = this.state;
     
 return (
-    <section>
+    <section className="section">
       <h1>Phonebook</h1>
     <ContactForm  onSubmit={this.forSubmitHandler}/>
     <h2>Contacts</h2>
@@ -75,5 +80,9 @@ return (
 }
 
 
+
 };
 
+App.propTypes = {
+  filter: PropTypes.string.isRequired
+}

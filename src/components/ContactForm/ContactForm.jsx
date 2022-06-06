@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { nanoid } from 'nanoid';
+import s from './contactForm.module.css';
 
 class ContactForm extends Component  {
 
@@ -14,7 +14,6 @@ class ContactForm extends Component  {
             [name]:value,
 
         })
-        
 }
 
     handleSubmit = (e)=> {
@@ -27,31 +26,35 @@ class ContactForm extends Component  {
     render() {
         const { name, number } = this.state;
           return(
-        <form onSubmit = {this.handleSubmit}>
-        <label>Name
-            <input
-                type="text"
-                name="name"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-                value={name}
-                onChange={this.handleNameChange}
-             />
+              <form className={s.form} action="submit" onSubmit = {this.handleSubmit}>
+                  <label className={s.label} >
+                <span className={s.formSpan} > Name</span>     
+                      <input
+                           className = {s.input}
+                            type="text"
+                            name="name"
+                            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                            required
+                            value={name}
+                            onChange={this.handleNameChange}
+                        />
                   </label>
                   
-                  <label> Number
+                  <label className={s.label} >
+                <span className = {s.formSpan}>Number</span>      
                       <input
-                type="tel"
-                name="number"
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-                value={number}
-                onChange={this.handleNameChange}
+                           className = {s.input}
+                            type="tel"
+                            name="number"
+                            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                            required
+                            value={number}
+                            onChange={this.handleNameChange}
                 />
                   </label>
-            <button type='submit'>Add Contact</button>
+            <button type='submit' className = {s.button}>Add Contact</button>
 </form>
     )
    }
