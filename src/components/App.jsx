@@ -29,7 +29,7 @@ export class App extends Component{
 
     this.setState(prevState => {
       const { contacts } = prevState;
-      const nameContact = contacts.find(c => c.name === name)
+      const nameContact = contacts.find(c => c.name.toLowerCase() === name.toLowerCase())
       if (nameContact) {
         alert(`${name} is already in contact`)
         return;
@@ -84,5 +84,5 @@ return (
 };
 
 App.propTypes = {
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.string,
 }
