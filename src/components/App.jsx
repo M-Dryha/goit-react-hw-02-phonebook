@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types'; 
 import ContactForm from "./ContactForm";
 import ListContacts from "./ListContacts";
 import Filter  from "./Filter";
@@ -82,7 +81,3 @@ return (
 
 
 };
-
-App.propTypes = {
-  filter: PropTypes.string,
-}
